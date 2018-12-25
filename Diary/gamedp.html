@@ -1,0 +1,108 @@
+<!-- 팩맨 게임 창-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="game.js"></script>
+   <style>
+       
+        #pac {
+            position: absolute;
+            left: 75px;
+            top: 75px;
+            z-index: 2;
+        }
+
+        #mst1 {
+            position: absolute;
+            left: 75px;
+            top: 75px;
+        }
+
+        #mst2 {
+            position: absolute;
+            left: 250px;
+            top: 75px;
+        }
+
+        #mst3 {
+            position: absolute;
+            left: 425px;
+            top: 75px;
+        }
+
+        #mst4 {
+            position: absolute;
+            left: 75px;
+            top: 250px;
+        }
+
+        #mst5 {
+            position: absolute;
+            left: 250px;
+            top: 250px;
+        }
+
+        #mst6 {
+            position: absolute;
+            left: 425px;
+            top: 250px;
+        }
+
+        #mst7 {
+            position: absolute;
+            left: 75px;
+            top: 425px;
+        }
+
+        #mst8 {
+            position: absolute;
+            left: 250px;
+            top: 425px;
+        }
+
+        #mst9 {
+            position: absolute;
+            left: 425px;
+            top: 425px;
+        }
+
+        #lgin{
+            display: inline;
+        }
+    </style>
+</head>
+
+<body onload="start()">
+    
+    <img src="front.gif" id="pac" height="100" width="100">
+    <img src="monster.gif" id="mst1" height="100" width="100">
+    <img src="monster.gif" id="mst2" height="100" width="100">
+    <img src="monster.gif" id="mst3" height="100" width="100">
+    <img src="monster.gif" id="mst4" height="100" width="100">
+    <img src="monster.gif" id="mst5" height="100" width="100">
+    <img src="monster.gif" id="mst6" height="100" width="100">
+    <img src="monster.gif" id="mst7" height="100" width="100">
+    <img src="monster.gif" id="mst8" height="100" width="100">
+    <img src="monster.gif" id="mst9" height="100" width="100">
+
+    <button id="a" type="button" class="btn btn-default" onclick="inputpw()">입력</button>
+    <form action="login.php" method="post" id="lgin">
+        <input type="hidden" name="inputpw" id="inputpw" value="">
+        <input type="hidden" name=ids value="<?php echo $_GET['ids'];?>">
+        <input type="hidden" name=lock value="<?php echo $_GET['lock'];?>">
+        <button type="button" class="btn btn-default" onclick="set()">설정</button>
+    </form>
+
+    <form action="regist.php" method="GET" id="sub">
+        <input type="hidden" name="pss" id="pss" value="">
+        <input type="hidden" name=ids value="<?php echo $_GET['ids'];?>">
+        
+    </form>
+</body>
+
+</html>

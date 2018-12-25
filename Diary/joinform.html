@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>STORYGRAM</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <style>
+      .form-group:nth-child(1) label{display: block;} 
+      .form-group:nth-child(1) input[type=text]{width: 100%; display: inline-block} 
+      .form-group:nth-child(1) input[type=button]{margin-left:10px;} 
+
+      .form-group:nth-child(7) label{display: block;} 
+      .form-group:nth-child(7) input{float: left; width: 30%; margin-right: 3%;} 
+      .form-group:nth-child(7) p{float: left; margin-right: 3%;} 
+      .form-group:nth-child(7) select{width: 26%; height: 34px; margin-left: 2%; border-radius:4px;} 
+     
+     #pos_canel{background-color: black; color:white; height:45px; width:100px; position : fixed; left : 7%; }
+     #pos_sign{background-color: black; color:white; height:45px; width:100px; position : fixed; left : 76%; }
+     
+     #pos_sign:hover, #pos_canel:hover {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+     }  
+</style>
+    
+<link type = "text/css" rel = "stylesheet" href = "n 3.css">
+</head>
+
+<body class = "main">
+<div id = "pos2">
+<h3>STORYGRAM</h3>
+</div>
+
+<div class = "slide" id = "photo">
+   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+   <!-- Wrapper for slides -->
+   <div class="carousel-inner" role="listbox">
+     <div class="item active">
+      <img src="2.jpg">   
+     </div>
+
+     <div class="item">
+      <img src="3.jpg">     
+     </div>
+   
+     <div class="item">
+      <img src="4.jpg">    
+     </div>
+   </div>
+   </div>
+</div>
+
+<form action = "logincheck.php" method = "POST">
+    <div id = "pos1">
+           <input id = "size1" class = "form-control" type = "text" name = "id" size = "20" placeholder="ID" onfocus = "this.value =''">
+           <br>
+           <input id = "size1" class = "form-control" type = "password" name = "password3" size = "20" placeholder="PW" onfocus = "this.value =''">
+           <br><br>
+          <input type = "submit" value = "Loign" class="btn pull-left">
+          <input type = "button" class="btn pull-right" data-toggle="modal" data-target="#myModal" value = "Sign Up">
+    </div>
+</form>
+    
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4>Sign up</h4>
+         </div>
+      
+         <div class="modal-body" style = "padding:7%">
+            <form action = "insert.php" method = "POST">
+               <div class="form-group">   
+                  <label for="ID"><span class="glyphicon glyphicon-user"></span>ID</label>
+                  <input type="text" class="form-control" maxLength = "20" name="userid" id="ID" required> 
+               </div>
+         
+               <div class="form-group"> 
+                  <label for="PW"><span class="glyphicon glyphicon-lock"></span>Password</label> 
+                  <input type="password" class="form-control" maxLength = "20" name="password" id="PW1" required> 
+               </div> 
+         
+               <div class="form-group"> 
+                  <label for="PW2"><span class="glyphicon glyphicon-lock"></span>Password Check</label> 
+                  <input type="password" class="form-control" maxLength = "20" name="password2" id="PW2" onchange = "pwcheck()" required> 
+               </div>
+         
+               <div class="form-group"> 
+                  <label for="NAME"><span class="glyphicon glyphicon-user"></span>Name</label>
+                  <input type="text" class="form-control" maxLength = "20" name="username" id="name" required>
+               </div>
+         
+               <div class="form-group"> 
+                  <label for="AGE"><span class="glyphicon glyphicon-time"></span>Age</label>
+                  <input type="text" class="form-control" maxLength = "5" name="userage" id="age" required>
+               </div>
+         
+               <div class="form-group"> 
+                  <label for="GENDER"><span class="glyphicon glyphicon-heart"></span>Gender</label>
+                  <div class="radio_wrap"> 
+                     <label for="gender1">MALE</label> 
+                     <input type="radio" value="m" name="genders" required> 
+                     <label for="gender2">FEMALE</label> 
+                     <input type="radio" value="f" name="genders" required> 
+                  </div> 
+               </div> 
+               <div class="form-group"> 
+                  <label for="E-MAIL"><span class="glyphicon glyphicon-envelope"></span>E-Mail</label>
+                  <input type="text" class="form-control" name="useremail" id="email" required>
+                   <p>@</p>
+                   <input type="text" class="form-control" name="userdomain" id="domain" required> 
+                    <select name="sel" id="sel" onchange="domain1()"> 
+                        <option value="">직접입력</option> 
+                        <option value="naver.com">naver.com</option> 
+                        <option value="daum.net">daum.net</option> 
+                        <option value="gmail.com">gmail.com</option> 
+                    </select> 
+
+               </div> 
+               <p>
+                    <label>
+                        <span class="glyphicon glyphicon-map-marker"></span> 지역</label>
+                    <br>
+                </p>
+                <select name="city" style="display : inline; width : 120px; color:gray;" required>
+                    <option value="1">서울특별시</option>
+                    <option value="2">인천광영시</option>
+                    <option value="3">대전광역시</option>
+                    <option value="4">광주광역시</option>
+                    <option value="5">대구광역시</option>
+                    <option value="6">부산광역시</option>
+                    <option value="7">제주도</option>
+                    <option value="8">경상북도</option>
+                    <option value="9">경상남도</option>
+                    <option value="10">충청북도</option>
+                    <option value="11">충청남도</option>
+                    <option value="12">전라북도</option>
+                    <option value="13">전라남도</option>
+                    <option value="14">강원도</option>
+                    <option value="15">경기도</option>
+                    <option value="16">수원</option>
+                    <option value="17">의정부</option>
+                    <option value="18">춘천</option>
+                    <option value="19">원주</option>
+                    <option value="20">강릉</option>
+                    <option value="21">울산</option>
+                    <option value="22">안동</option>
+                    <option value="23">통영</option>
+                    <option value="24">여수</option>
+                    <option value="25">순천</option>
+                    <option value="26">목포</option>
+                    <option value="27">군산</option>
+                    <option value="28">청주</option>
+                    <option value="29">태안</option>
+                    <option value="30">천안</option>
+                </select> 
+               <div class="modal-footer">
+                  <input type="submit" id = "pos_sign" value = "Sign up" >
+                  <input type="button" id = "pos_canel" value = "cancel" data-dismiss="modal">
+               </div>               
+            </form>
+         </div>
+      </div>
+    </div>
+</div>
+   
+<script>
+    function domain1(){ 
+      var sel = document.getElementById('sel'); 
+      var domain=document.getElementById('domain'); 
+      if(sel.value==''){//직접 입력 선택 
+         domain.readOnly=false; 
+         domain.value=''; 
+         domain.focus(); 
+      }else{ 
+         domain.value = sel.value; 
+         domain.readOnly=true;//수정 불가 
+      } 
+    }
+    function pwcheck(){
+        var x = document.getElementById("PW1");
+        var y = document.getElementById("PW2");
+        
+      
+        if(x.value != y.value){
+            alert("비밀번호가 일치하지 않습니다.");
+            x.value = "";
+            y.value = "";
+        }
+        else{
+            alert("비밀번호가 일치합니다.");
+        }
+    }
+ </script>
+</body>
+
+</html>
